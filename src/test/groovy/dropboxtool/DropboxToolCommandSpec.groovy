@@ -8,10 +8,7 @@ import spock.lang.AutoCleanup
 import spock.lang.Shared
 import spock.lang.Specification
 
-import java.io.ByteArrayOutputStream
-import java.io.PrintStream
-
-class DropboxtoolCommandSpec extends Specification {
+class DropboxToolCommandSpec extends Specification {
 
     @Shared @AutoCleanup ApplicationContext ctx = ApplicationContext.run(Environment.CLI, Environment.TEST)
 
@@ -20,11 +17,11 @@ class DropboxtoolCommandSpec extends Specification {
         ByteArrayOutputStream baos = new ByteArrayOutputStream()
         System.setOut(new PrintStream(baos))
 
-        String[] args = ['-v'] as String[]
-        PicocliRunner.run(DropboxtoolCommand, ctx, args)
+        String[] args = ['-h'] as String[]
+        PicocliRunner.run(DropboxToolCommand, ctx, args)
 
         expect:
-        baos.toString().contains('Hi!')
+        baos.toString().contains('auth')
     }
 }
 

@@ -4,7 +4,7 @@ plugins {
     id("io.micronaut.application") version "3.4.1"
 }
 
-version = "0.1"
+version = "1.0"
 group = "dropboxtool"
 
 repositories {
@@ -21,13 +21,15 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-validation")
 
-    testImplementation("io.micronaut:micronaut-http-client")
+    implementation 'com.dropbox.core:dropbox-core-sdk:5.2.0'
+    implementation 'org.codehaus.groovy:groovy-json'
 
+    testImplementation("io.micronaut:micronaut-http-client")
 }
 
 
 application {
-    mainClass.set("dropboxtool.DropboxtoolCommand")
+    mainClass.set("dropboxtool.DropboxToolCommand")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("11")
